@@ -1,0 +1,5 @@
+# gitigonre faz com que as pasta não desejada seja carregadas no arquivo
+# * significa qualquer coisa que tenha com a descrição 
+*-lock.json
+node_modules
+swagger/swagger_output.json
