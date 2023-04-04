@@ -3,3 +3,6 @@
 *-lock.json
 node_modules
 swagger/swagger_output.json
+
+.env*
+

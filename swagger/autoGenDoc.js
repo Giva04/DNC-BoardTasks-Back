@@ -7,11 +7,13 @@ const swaggerAutogen = require('swagger-autogen')({
     openapi:'3.0.0',
     language:'pt-BR',
 })
+
 // variavel onde o arquivo sera criado OUTPUT
 const outputFile = './swagger_output.json';
 
+
 //variavel com as stringes que fazem as rotas (endpoint)
-const endpointsFiles = ['../index.js'];
+const endpointsFiles = ['../index.js', '../src/routes.js'];
 
 // variavel que configura a documentação
 let doc = {
