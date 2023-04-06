@@ -16,6 +16,7 @@ const swaggerOptions ={customCssUrl:'./swagger-ui.css' };
 // const indexRouter = require('./routes/index');
 //const usersRouter = require('./routes/users');
 const routes = require('./src/routes');
+const authDocProducao = require('./src/middlewares/authDoc');
 
 const app = express();
 // importando biblioteca DOTENV 
@@ -37,7 +38,7 @@ if(process.env.NODE_ENV !== 'test' ){
     // App.get vai redirecionar o usuario direto para pagina documento
     app.get('/',(req, res) => {  /*#swagger.ignore = true */ res.redirect('/doc'); });
     // App.use faz a rota doc onde acontece a documentação nessa função passa todas as variaveis 
-    app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile, this.options));
+    app.use('/doc', authDocProducao, swaggerUi.serve, swaggerUi.setup(swaggerFile, this.options));
        // app.use('/', indexRouter);
 }
 
