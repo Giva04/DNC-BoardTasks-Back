@@ -9,11 +9,11 @@ const swaggerAutogen = require('swagger-autogen')({
 })
 
 // variavel onde o arquivo sera criado OUTPUT
-const outputFile = './swagger_output.json';
+let outputFile = './swagger_output.json';
 
 
 //variavel com as stringes que fazem as rotas (endpoint)
-const endpointsFiles = ['../index.js', '../src/routes.js'];
+let endpointsFiles = ['../index.js', '../src/routes.js'];
 
 // variavel que configura a documentação
 let doc = {
@@ -49,9 +49,10 @@ let doc = {
      console.log("Documentação do Swagger gerada encontra-se no arquivo em: " + outputFile);
      // IF chega a variavel de ambiente usada para verificar em qual ambiente o codigo esta rodando
      // se não for o ambiente de production passara o ambiente index.js (principal)
-     if (process.env.NODE_ENV !== 'production') {
-         require("../index.js");
-     }
+      if (process.env.NODE_ENV !== 'production') {
+          require("../index.js");
+      }
+
  })
 
 
