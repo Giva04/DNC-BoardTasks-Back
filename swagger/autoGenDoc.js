@@ -1,5 +1,5 @@
 //importando as bibliotecas
-const mongooseToSwagger = require('mongoose-to-swagger')
+//const mongooseToSwagger = require('mongoose-to-swagger')
 const swaggerAutogen = require('swagger-autogen')({
     // OBJETOS DO SWAGGER AUTOGENDOC
     //openapi e um conceito do Swagger p/ ter uma documentação aberta
@@ -26,11 +26,11 @@ let doc = {
     // servidores
     servers: [
         {
-            url: "http://localhost:3000/",
+            url: "http://localhost:4000/",
             description: "Servidor localhost."
         },
         {
-            url: "https://dnc-board-tasks-back.vercel.app/",
+            url: "https://dnc-bt-back.vercel.app/",
             description: "Servidor de produção."
         }
     ],
