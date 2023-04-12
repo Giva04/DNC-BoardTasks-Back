@@ -1,5 +1,9 @@
 //importando as bibliotecas
-//const mongooseToSwagger = require('mongoose-to-swagger')
+
+const EsquemaTarefa = require('../src/models/tarefas.js');
+const EsquemaUsuario = require('../src/models/usuario.js');
+
+const mongooseToSwagger = require('mongoose-to-swagger')
 const swaggerAutogen = require('swagger-autogen')({
     // OBJETOS DO SWAGGER AUTOGENDOC
     //openapi e um conceito do Swagger p/ ter uma documentação aberta
@@ -15,6 +19,12 @@ let outputFile = './swagger_output.json';
 //variavel com as stringes que fazem as rotas (endpoint)
 let endpointsFiles = ['../index.js', '../src/routes.js'];
 
+
+if(String(process.env.OS).toLocaleLowerCase().includes("windows")){
+    outputFile = './swagger/swagger_output.json';
+    endpointsFiles = ['./index.js', './src/routes.js'];
+}
+
 // variavel que configura a documentação
 let doc = {
     // informações do SWAGGER
@@ -26,7 +36,7 @@ let doc = {
     // servidores
     servers: [
         {
-            url: "http://localhost:4000/",
+            url: "http://localhost:3000/",
             description: "Servidor localhost."
         },
         {
@@ -36,12 +46,13 @@ let doc = {
     ],
      consumes: ['application/json'],
      produces: ['application/json'],
-    //  components: {
-    //      schemas: {
-    //          Usuario: mongooseToSwagger(EsquemaUsuario),
-    //          Tarefa: mongooseToSwagger(EsquemaTarefa)
-    //      }
-    //  }
+     components: {
+        schemas: {
+            Usuario: mongooseToSwagger(EsquemaUsuario),
+            Tarefa: mongooseToSwagger(EsquemaTarefa),
+        }
+     }
+     
  }
 
  // chamando SWAGGERAUTOGEN , cria função com parametros das variaveis (output,endpoints,doc).tehn , pedi para o programar aguardar a execução da função e depois executa a arrow function e o console log
